@@ -1,0 +1,47 @@
+- mandel, a mandelbrot set generator in go
+
+- description
+  I wanted to parallelize some stuff with go's awesome features.
+  This does exactly that! All the code is in calc.go
+
+- running
+  % go get github.com/go-gl/gl
+  % go get github.com/go-gl/glfw
+  % go build && ./ma*
+
+- benchmarks
+  The trick is to make the functions 'go' in the background. That's going on in
+  calc.go's Calculate functions "go calc(". It'll work slower, if you remove it.
+  Also GOMAXPROCS matter, so it's got to be set.
+
+  % go test -bench '.*'
+  testing: warning: no tests to run
+  PASS
+  Benchmark_calcs1               1        1346158000 ns/op
+  Benchmark_calcs4               5         217516200 ns/op
+  ok      _/Users/vein/code/go/mandel     4.129s
+
+- about
+  Uses go-gl/gl, go-gl/glfw.
+  It can also be easily changed to produce this:
+
+                 .....,,;!##;:,...
+              .....,,,:;#####;:,,..
+            ......,::;;!#####!;:::,.
+          ......,,:!##############:..
+        ....,,,,,:;!##############:,.
+      ...,:::::::;################;,..
+     ...,:##!##!!!#################:..
+   ....,,:!########################:..
+  ..,,,:;!#########################,..
+  ,::::;##########################;,..
+  ###############################!:,..
+  ,::::;##########################;,..
+  ..,,,:;!#########################,..
+   ....,,:!########################:..
+     ...,:##!##!!!#################:..
+      ...,:::::::;################;,..
+        ....,,,,,:;!##############:,.
+          ......,,:!##############:..
+            ......,::;;!#####!;:::,.
+              .....,,,:;#####;:,,..
